@@ -1,11 +1,7 @@
+import java.util.ArrayList;
+
 public class Document  {
 
-
-	private String titre = new String();
-
-	public Document(String titre) {
-		this.titre=titre;
-	}
-	
-	
+	public static void main(String[] args) {
+		   ArrayList<String> cars = new ArrayList<String>();
 }
