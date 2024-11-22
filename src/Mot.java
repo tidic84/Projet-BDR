@@ -9,7 +9,7 @@ public class Mot{
 		this.mot = mot;
 	}
 	
-	public String getNom() {
+	public String getMot() {
 		return mot ; 
 	}
 
