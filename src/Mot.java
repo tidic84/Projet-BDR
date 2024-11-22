@@ -2,6 +2,11 @@
 public class Mot{
 	
 
+	@Override
+	public String toString() {
+		return mot;
+	}
+
 	private String mot = new String();
 	
 	
@@ -13,5 +18,5 @@ public class Mot{
 		return mot ; 
 	}
 
-}
 
+}
