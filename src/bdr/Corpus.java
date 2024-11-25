@@ -6,5 +6,6 @@ public class Corpus extends Vector<Document> {
 	
 	public Corpus(String path, DataSets dataSets) {
 		
+		
 	}
 }
