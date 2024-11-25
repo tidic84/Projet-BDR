@@ -1,3 +1,4 @@
+package bdr;
 import java.util.ArrayList;
 
 public class Document extends ArrayList<Mot> {

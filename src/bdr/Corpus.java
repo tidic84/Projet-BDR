@@ -1,3 +1,4 @@
+package bdr;
 import java.util.Vector;
 
 public class Corpus extends Vector<Document> {
