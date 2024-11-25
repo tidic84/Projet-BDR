@@ -11,6 +11,7 @@ public class Document extends ArrayList<Mot> {
    private ArrayList<Mot> listeDoc = new ArrayList<Mot>();
 
 	public Document(Mot titre) {
+		// Faire une verif
 		super();
 		
 		this.titre=titre;
@@ -20,6 +21,7 @@ public class Document extends ArrayList<Mot> {
 	}
 	
 	public void putMot(String leMot) {
+		// Faire verif
 
 		listeDoc.add(new Mot (leMot));
 	}
