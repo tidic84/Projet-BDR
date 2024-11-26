@@ -1,5 +1,6 @@
 package bdr;
 
 public enum DataSets {
-	WIKIPEDIA
+	WIKIPEDIA,
+    OUVRAGES;
 }

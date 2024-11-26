@@ -38,7 +38,7 @@ public class Corpus extends Vector<Document> {
     }
     
     
-    public void addDocument(String path) {
+    public void addDocument(String path , DataSets dataSets) {
     	try {
     	 File doc = new File(path);
          Scanner scandoc = new Scanner (doc);
