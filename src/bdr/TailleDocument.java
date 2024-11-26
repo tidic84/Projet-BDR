@@ -1,16 +1,22 @@
 package bdr;
 
-public class TailleDocument extends Corpus {
+import java.util.Vector;
 
-	public TailleDocument(String path, DataSets dataSets) {
-		super(path, dataSets);
-		// TODO Auto-generated constructor stub
+public class TailleDocument  {
+
+
+	
+	
+	
+	 public int calculer(Corpus corpus) {
+	int n=0;
+	Vector<Document> colDocuments = corpus.getCollDocuments();
+	
+	for (Document documents : colDocuments ) {
+		n++;
 	}
 	
-	
-	public void calculer(Corpus corpus) {
-	int n=0;
-	
+	return n ;
 	
 		
 	}
