@@ -2,7 +2,7 @@ package bdr;
 
 import java.util.Vector;
 
-public class TailleDocument  {
+public class TailleDocument implements Calculer {
 
 
 	

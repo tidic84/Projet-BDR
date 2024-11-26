@@ -85,6 +85,10 @@ public class Corpus extends Vector<Document> {
 		return collDocuments;
 	}
 	
+	
+	public int taille(Calculer taille) {
+		return taille.calculer(this);
+	}
 
 
 

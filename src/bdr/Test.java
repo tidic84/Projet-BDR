@@ -10,8 +10,11 @@ public class Test {
 		TailleMot taillemot = new TailleMot();
 		
 		System.out.println(corpus);
-		System.out.println(taillecol.calculer(corpus));
-		System.out.println(taillemot.calculer(corpus));
+//		System.out.println(taillecol.calculer(corpus));
+//		System.out.println(taillemot.calculer(corpus));
+		
+//		corpus.taille(taillecol);
+		System.out.println(corpus.taille(taillecol));
 	}
 
 }

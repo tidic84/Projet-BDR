@@ -3,7 +3,7 @@ package bdr;
 import java.util.ArrayList;
 import java.util.Vector;
 
-public class TailleMot {
+public class TailleMot implements Calculer{
 
 
 
