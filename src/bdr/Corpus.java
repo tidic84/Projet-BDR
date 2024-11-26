@@ -17,11 +17,12 @@ public class Corpus extends Vector<Document> {
 			File myObj = new File(path);
 			Scanner myReader = new Scanner(myObj);
 			String data = myReader.nextLine();
-			String titre = "";
-			Document document = null;
 
-			while (myReader.hasNextLine() && cpt < 1000)
+			while (myReader.hasNextLine() && cpt < 1000) // ENLEVER le cpt < 1000
 			{
+				String titre = "";
+				Document document = null;
+				
 				switch (dataSets) {
 				case DataSets.WIKIPEDIA:
 					titre = data.split("\\|\\|\\|")[0];
