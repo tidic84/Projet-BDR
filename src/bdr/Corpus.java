@@ -11,13 +11,15 @@ public class Corpus extends Vector<Document> {
     public Corpus(String path, DataSets dataSets) {
 
         collDocuments=new Vector<Document>();
+        int cpt = 0;
 
          try {
               File myObj = new File(path);
               Scanner myReader = new Scanner(myObj);
 
-              while (myReader.hasNextLine())
+              while (myReader.hasNextLine() && cpt < 10000)
               {
+            	  cpt++;
                 String[] data = myReader.nextLine().split("\\|\\|\\|");
 //                String[] mots = data[1].split(" ");
                 Document document = new Document(new Mot (data[0]));
@@ -25,6 +27,7 @@ public class Corpus extends Vector<Document> {
 //                	document.putMot(mot);
 //                }
                 collDocuments.add(document);
+                System.out.println(document);
 
               }
               myReader.close();
