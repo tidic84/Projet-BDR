@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner; 
 
 public class Corpus extends Vector<Document> {
-    public String titre;
+    private String titre;
     private Vector<Document>collDocuments ;
 
     public Corpus(String path, DataSets dataSets) {
