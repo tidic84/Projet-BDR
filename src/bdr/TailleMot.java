@@ -8,7 +8,7 @@ public class TailleMot {
 
 
 
-	public int calculer(Corpus corpus) {
+	public int calculerMot(Corpus corpus) {
 		Vector<Document> colDocuments = corpus.getCollDocuments();
 int totalmot = 0 ; 
 		for (Document document : colDocuments ) {

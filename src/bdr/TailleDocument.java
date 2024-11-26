@@ -8,7 +8,7 @@ public class TailleDocument  {
 	
 	
 	
-	 public int calculer(Corpus corpus) {
+	 public int calculerDoc(Corpus corpus) {
 	int n=0;
 	Vector<Document> colDocuments = corpus.getCollDocuments();
 	
