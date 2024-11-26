@@ -32,6 +32,8 @@ public class Corpus extends Vector<Document> {
               System.out.println("An error occurred.");
               e.printStackTrace();
             }
+         
+         titre = path ;
 
     }
     
@@ -53,4 +55,10 @@ public class Corpus extends Vector<Document> {
     	            }
 
     }
+
+
+	@Override
+	public String toString() {
+		return "Corpus [titre=" + titre + ", collDocuments=" + collDocuments + "]";
+	}
 }
