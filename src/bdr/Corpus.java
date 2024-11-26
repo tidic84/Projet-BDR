@@ -43,8 +43,8 @@ public class Corpus extends Vector<Document> {
     			
     	while ( scandoc.hasNextLine());
     			{
-    	String data = scandoc.nextLine();
-    	collDocuments.add(new Document(new Mot (data)));
+    	String[] data = scandoc.nextLine().split("\\|\\|\\|");    	
+    	collDocuments.add(new Document(new Mot (data[0])));
     	}
     	scandoc.close();	
     	}catch (FileNotFoundException e) {
@@ -53,4 +53,4 @@ public class Corpus extends Vector<Document> {
     	            }
 
     }
-}}
+}
