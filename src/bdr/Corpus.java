@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner; 
 
 public class Corpus extends Vector<Document> {
-    private String titre;
+    public String titre;
     private Vector<Document>collDocuments ;
 
     public Corpus(String path, DataSets dataSets) {
@@ -18,10 +18,13 @@ public class Corpus extends Vector<Document> {
 
               while (myReader.hasNextLine())
               {
-                String data = myReader.nextLine();
-                String[] splitted = data.split("|||");
-                System.out.println(splitted[0]);
-              //  collDocuments.add(new Document(new Mot (data)));
+                String[] data = myReader.nextLine().split("\\|\\|\\|");
+//                String[] mots = data[1].split(" ");
+                Document document = new Document(new Mot (data[0]));
+//                for(String mot : mots ) {
+//                	document.putMot(mot);
+//                }
+                collDocuments.add(document);
 
               }
               myReader.close();
