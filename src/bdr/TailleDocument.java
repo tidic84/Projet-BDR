@@ -12,7 +12,7 @@ public class TailleDocument  {
 	int n=0;
 	Vector<Document> colDocuments = corpus.getCollDocuments();
 	
-	for (Document documents : colDocuments ) {
+	for (Document document : colDocuments ) {
 		n++;
 	}
 	

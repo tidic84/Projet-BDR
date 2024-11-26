@@ -1,5 +1,6 @@
 package bdr;
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class Document extends ArrayList<Mot> {
 
@@ -27,6 +28,10 @@ public class Document extends ArrayList<Mot> {
 		listeDoc.add(new Mot (leMot));
 	}
 
+	
+	public ArrayList<Mot> getListMot() {
+		return listeDoc;
+	}
 }
 
 
