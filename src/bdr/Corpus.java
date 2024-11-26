@@ -31,4 +31,23 @@ public class Corpus extends Vector<Document> {
             }
 
     }
-}
+    
+    
+    public void addDocument(String path) {
+    	try {
+    	 File doc = new File(path);
+         Scanner scandoc = new Scanner (doc);
+    			
+    	while ( scandoc.hasNextLine());
+    			{
+    	String data = scandoc.nextLine();
+    	collDocuments.add(new Document(new Mot (data)));
+    	}
+    	scandoc.close();	
+    	}catch (FileNotFoundException e) {
+    	              System.out.println("An error occurred.");
+    	              e.printStackTrace();
+    	            }
+
+    }
+}}
