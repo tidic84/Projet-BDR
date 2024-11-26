@@ -30,12 +30,18 @@ public class Corpus extends Vector<Document> {
 				case DataSets.WIKIPEDIA:
 					titre = data.split("\\|\\|\\|")[0];
 					document = new Document(new Mot(titre));
+					for(String mot : data.split("\\|\\|\\|")[1].split(" ")) {
+						document.putMot(mot);
+					}
 					collDocuments.add(document);
 					cpt++; // ENLEVER
 					break;
 				case DataSets.OUVRAGES:
 					titre = data.split("\\{")[0];
 					document = new Document(new Mot(titre));
+					for(String mot : data.split("\\{")[1].split(" ")) {
+						document.putMot(mot);
+					}
 					collDocuments.add(document);
 					cpt++; // ENLEVER
 				}
