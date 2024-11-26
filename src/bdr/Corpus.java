@@ -18,13 +18,19 @@ public class Corpus extends Vector<Document> {
 
               while (myReader.hasNextLine())
               {
-                String[] data = myReader.nextLine().split("\\|\\|\\|");
-//                String[] mots = data[1].split(" ");
-                Document document = new Document(new Mot (data[0]));
-//                for(String mot : mots ) {
-//                	document.putMot(mot);
-//                }
-                collDocuments.add(document);
+            	  switch (dataSets) {
+            	  case DataSets.WIKIPEDIA:
+                      String[] data = myReader.nextLine().split("\\|\\|\\|");
+                    Document document = new Document(new Mot (data[0]));
+                    collDocuments.add(document);
+                    break;
+            	  case DataSets.OUVRAGES:
+                      String[] datao = myReader.nextLine().split("{");
+                    Document ouvrages = new Document(new Mot (datao[0]));
+                    collDocuments.add(ouvrages);
+                    	
+            	  }
+
 
               }
               myReader.close();
