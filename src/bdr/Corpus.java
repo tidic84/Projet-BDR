@@ -11,25 +11,29 @@ public class Corpus extends Vector<Document> {
     public Corpus(String path, DataSets dataSets) {
 
         collDocuments=new Vector<Document>();
+        int cpt = 0;
 
          try {
               File myObj = new File(path);
               Scanner myReader = new Scanner(myObj);
 
-              while (myReader.hasNextLine())
+              while (myReader.hasNextLine() && cpt < 10000)
               {
             	  switch (dataSets) {
             	  case DataSets.WIKIPEDIA:
                       String[] data = myReader.nextLine().split("\\|\\|\\|");
                     Document document = new Document(new Mot (data[0]));
                     collDocuments.add(document);
+              	  cpt++;
                     break;
             	  case DataSets.OUVRAGES:
                       String[] datao = myReader.nextLine().split("{");
                     Document ouvrages = new Document(new Mot (datao[0]));
                     collDocuments.add(ouvrages);
+              	  cpt++;
                     	
             	  }
+
 
 
               }
