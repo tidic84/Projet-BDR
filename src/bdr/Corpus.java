@@ -74,6 +74,10 @@ public class Corpus extends Vector<Document> {
 
 
 	}
+	
+	public Vector<Document> getCollDocuments() {
+		return collDocuments;
+	}
 
 
 	@Override
