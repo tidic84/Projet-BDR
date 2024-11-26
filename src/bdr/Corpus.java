@@ -11,12 +11,12 @@ public class Corpus extends Vector<Document> {
 	public Corpus(String path, DataSets dataSets) {
 
 		collDocuments=new Vector<Document>();
-		int cpt = 0;// ENLEVER
 
 
 		try {
 			File myObj = new File(path);
 			Scanner myReader = new Scanner(myObj);
+			int cpt = 0;// ENLEVER
 
 
 			String data = myReader.nextLine();
