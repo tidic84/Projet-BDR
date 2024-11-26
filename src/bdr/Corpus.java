@@ -11,30 +11,33 @@ public class Corpus extends Vector<Document> {
 	public Corpus(String path, DataSets dataSets) {
 
 		collDocuments=new Vector<Document>();
-		int cpt = 0;
+		int cpt = 0;// ENLEVER
+
 
 		try {
 			File myObj = new File(path);
 			Scanner myReader = new Scanner(myObj);
 
-			while (myReader.hasNextLine() && cpt < 10000)
+
+			String data = myReader.nextLine();
+			String titre = "";
+			Document document = null;
+
+			while (myReader.hasNextLine() && cpt < 1000)
 			{
 				switch (dataSets) {
 				case DataSets.WIKIPEDIA:
-					String[] data = myReader.nextLine().split("\\|\\|\\|");
-					Document document = new Document(new Mot (data[0]));
+					titre = data.split("\\|\\|\\|")[0];
+					document = new Document(new Mot(titre));
 					collDocuments.add(document);
-					cpt++;
+					cpt++; // ENLEVER
 					break;
 				case DataSets.OUVRAGES:
-					String[] datao = myReader.nextLine().split("\\{");
-					Document ouvrages = new Document(new Mot (datao[0]));
-					collDocuments.add(ouvrages);
-					cpt++;
-					break;	
+					titre = data.split("\\{")[0];
+					document = new Document(new Mot(titre));
+					collDocuments.add(document);
+					cpt++; // ENLEVER
 				}
-
-
 
 			}
 			myReader.close();
@@ -46,6 +49,10 @@ public class Corpus extends Vector<Document> {
 		titre = path ;
 
 	}
+
+
+
+
 
 
 	public void addDocument(String path , DataSets dataSets) {
@@ -63,6 +70,7 @@ public class Corpus extends Vector<Document> {
 			System.out.println("An error occurred.");
 			e.printStackTrace();
 		}
+
 
 	}
 
