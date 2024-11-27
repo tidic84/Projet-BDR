@@ -16,10 +16,10 @@ public class Corpus extends Vector<Document> {
             File myObj = new File(path);
             Scanner myReader = new Scanner(myObj);
             int cpt = 0;// ENLEVER
-            String data = myReader.nextLine();
 
-            while (myReader.hasNextLine() && cpt < 1000) // ENLEVER le cpt < 1000
-            {
+            while (myReader.hasNextLine() && cpt < 1000000) {
+
+                String data = myReader.nextLine();
                 String titre = "";
                 Document document = null;
 
@@ -31,6 +31,9 @@ public class Corpus extends Vector<Document> {
                         for (String mot : data.split("\\|\\|\\|")[1].split(" ")) {
                             document.putMot(mot);
                         }
+                        
+                        System.out.println(cpt);
+                        System.out.println(titre);
                         collDocuments.add(document);
                         cpt++; // ENLEVER
                         break;
@@ -38,13 +41,14 @@ public class Corpus extends Vector<Document> {
                         titre = data.split("\\{")[0];
                         document = new Document(new Mot(titre));
 
-                        for (String mot : data.split("\\{")[1].split(" ")) {
+                        for (String mot : data.split("\\{")[1].split(" ")) { // modifier
                             document.putMot(mot);
                         }
                         collDocuments.add(document);
                         cpt++; // ENLEVER
 
                 }
+
 
             }
             myReader.close();
