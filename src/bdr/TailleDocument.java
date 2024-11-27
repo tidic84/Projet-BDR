@@ -2,13 +2,13 @@ package bdr;
 
 import java.util.Vector;
 
-public class TailleDocument  {
+public class TailleDocument implements Calculer {
 
 
 	
 	
 	
-	 public int calculerDoc(Corpus corpus) {
+	 public int calculer(Corpus corpus) {
 	int n=0;
 	Vector<Document> colDocuments = corpus.getCollDocuments();
 	

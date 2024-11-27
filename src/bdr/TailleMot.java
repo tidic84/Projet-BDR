@@ -3,12 +3,12 @@ package bdr;
 import java.util.ArrayList;
 import java.util.Vector;
 
-public class TailleMot {
+public class TailleMot implements Calculer{
 
 
 
 
-	public int calculerMot(Corpus corpus) {
+	public int calculer(Corpus corpus) {
 		Vector<Document> colDocuments = corpus.getCollDocuments();
 int totalmot = 0 ; 
 		for (Document document : colDocuments ) {
