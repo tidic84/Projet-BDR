@@ -1,5 +1,8 @@
 package bdr;
 
+import java.lang.invoke.VolatileCallSite;
+import java.util.HashMap;
+
 public class Test {
 
 	public static void main(String[] args) {
@@ -11,11 +14,15 @@ public class Test {
 		
 //		System.out.println(corpus);
 //		System.out.println(taillecol.calculer(corpus));
-		System.out.println(taillemot.calculer(corpus));
+		//System.out.println(taillemot.calculer(corpus));
 		
 //		corpus.taille(taillecol);
 //		System.out.println(corpus.taille(taillecol));
 //		corpus.test();
-	}
+
+		Vocabulary reche = new Vocabulary("./ressources/stemmed.vocab");
+		System.out.println(reche);
+	};
+
 
 }
