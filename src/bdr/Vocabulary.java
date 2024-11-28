@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Vocabulary {
 
-    HashMap<Mot, Integer> recherche = new HashMap<Mot, Integer>();
+    public static HashMap<Mot, Integer> recherche = new HashMap<Mot, Integer>();
 
     //HashSet<Mot> stopl = new HashSet<Mot>();
 
@@ -20,7 +20,7 @@ public class Vocabulary {
             int cpt=0;
 
 
-            while (myReader.hasNextLine() && cpt < 100) {
+            while (myReader.hasNextLine()) {
 
                 String data = myReader.nextLine();
                 Mot vocab = new Mot(data.split(" ")[0]);
@@ -36,6 +36,19 @@ public class Vocabulary {
         }
     }
 
+    public int getId(Mot mot) {
+        final int[] res = new int[1];
+        recherche.forEach((key, value) -> {
+            if(key.toString() == mot.toString()) {
+                res[0] = value.intValue();
+            };
+        });
+        return res[0];
+    }
+
+    public HashMap<Mot, Integer> getRecherche() {
+        return recherche;
+    }
 
     @Override
     public String toString() {

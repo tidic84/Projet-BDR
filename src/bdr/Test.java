@@ -9,8 +9,8 @@ public class Test {
 
 //		Corpus corpus = new Corpus("./ressources/booksummaries.txt", DataSets.OUVRAGES);
 		Corpus corpus = new Corpus("./ressources/stemmed.txt", DataSets.WIKIPEDIA);
-		TailleDocument taillecol = new TailleDocument();
-		TailleMot taillemot = new TailleMot();
+//		TailleDocument taillecol = new TailleDocument();
+//		TailleMot taillemot = new TailleMot();
 		
 //		System.out.println(corpus);
 //		System.out.println(taillecol.calculer(corpus));
@@ -20,8 +20,12 @@ public class Test {
 //		System.out.println(corpus.taille(taillecol));
 //		corpus.test();
 
-		Vocabulary reche = new Vocabulary("./ressources/stemmed.vocab");
-		System.out.println(reche);
+//		Vocabulary reche = new Vocabulary("./ressources/stemmed.vocab");
+//		System.out.println(reche);
+		TfIdf tfIdf = new TfIdf();
+		tfIdf.vocabulaire(corpus);
+		System.out.println(tfIdf);
+
 	};
 
 
