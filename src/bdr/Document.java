@@ -6,7 +6,7 @@ public class Document extends ArrayList<Mot> {
 
     @Override
     public String toString() {
-        return "Document [titre=" + titre + ", listeDoc=" + this + "]";
+        return "Document [titre=" + titre + ", listeDoc=" + super.toString() + "]";
     }
 
     private Mot titre;

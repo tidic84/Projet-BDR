@@ -7,17 +7,15 @@ import java.util.Scanner;
 
 public class Corpus extends Vector<Document> {
     private String titre;
-    private Vector<Document> collDocuments;
 
     public Corpus(String path, DataSets dataSets) {
-        collDocuments = new Vector<Document>();
 
         try {
             File myObj = new File(path);
             Scanner myReader = new Scanner(myObj);
             int cpt = 0;// ENLEVER
 
-            while (myReader.hasNextLine() && cpt < 1000000) {
+            while (myReader.hasNextLine() && cpt < 1) {
 
                 String data = myReader.nextLine();
                 String titre = "";
@@ -34,7 +32,7 @@ public class Corpus extends Vector<Document> {
                         
                         System.out.println(cpt);
                         System.out.println(titre);
-                        collDocuments.add(document);
+                        this.add(document);
                         cpt++; // ENLEVER
                         break;
                     case OUVRAGES:
@@ -44,7 +42,7 @@ public class Corpus extends Vector<Document> {
                         for (String mot : data.split("\\{")[1].split(" ")) { // modifier
                             document.putMot(mot);
                         }
-                        collDocuments.add(document);
+                        this.add(document);
                         cpt++; // ENLEVER
 
                 }
@@ -77,7 +75,7 @@ public class Corpus extends Vector<Document> {
             while (scandoc.hasNextLine()) ;
             {
                 String[] data = scandoc.nextLine().split("\\|\\|\\|");
-                collDocuments.add(new Document(new Mot(data[0])));
+                this.add(new Document(new Mot(data[0])));
             }
             scandoc.close();
         } catch (FileNotFoundException e) {
@@ -88,7 +86,7 @@ public class Corpus extends Vector<Document> {
     }
 
     public Vector<Document> getCollDocuments() {
-        return collDocuments;
+        return this;
     }
 
     public int taille(Calculer taille) {
@@ -97,6 +95,6 @@ public class Corpus extends Vector<Document> {
 
     @Override
     public String toString() {
-        return "Corpus [titre=" + titre + ", collDocuments=" + collDocuments + "]";
+        return "Corpus [titre=" + titre + ", collDocuments=" + super.toString() + "]";
     }
 }
