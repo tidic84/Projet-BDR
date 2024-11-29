@@ -22,9 +22,9 @@ public class Document extends ArrayList<Mot> {
         this.add(new Mot(leMot));
     }
 
-    public int nbMots(Document document) {
+    public int nbMots() {
         int n = 0;
-        for (Mot mot : document) {
+        for (Mot mot : this) {
             n++;
         }
         return n;

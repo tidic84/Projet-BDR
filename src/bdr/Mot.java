@@ -1,5 +1,7 @@
 package bdr;
 
+import java.util.Objects;
+
 public class Mot {
 
     @Override
@@ -20,5 +22,14 @@ public class Mot {
     public String getMot() {
         return mot;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Mot)) return false;
+        Mot mot1 = (Mot) o;
+        return Objects.equals(mot, mot1.mot);
+    }
+
 
 }

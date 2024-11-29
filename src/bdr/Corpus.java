@@ -14,7 +14,7 @@ public class Corpus extends Vector<Document> {
             Scanner myReader = new Scanner(myObj);
             int cpt = 0;// ENLEVER
 
-            while (myReader.hasNextLine() ) {
+            while (myReader.hasNextLine() && cpt  < 10) {
 
                 String data = myReader.nextLine();
                 String titre = "";
@@ -54,6 +54,7 @@ public class Corpus extends Vector<Document> {
         }
 
         titre = path;
+
 
     }
 

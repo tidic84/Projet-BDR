@@ -23,7 +23,7 @@ public class Vocabulary {
         }
     }
 
-    public int getId(Mot mot) {
+    public static int getId(Mot mot) {
         final int[] res = new int[1];
         recherche.forEach((key, value) -> {
             if(key.toString() == mot.toString()) {
@@ -43,6 +43,24 @@ public class Vocabulary {
 
     public static  HashSet<Mot> getStopWord(){
         return stopl ;
+    }
+
+    public static boolean stopWordContains (Mot mot ){
+
+        for (Mot mot2 : stopl){
+               if(mot.equals(mot2)) return true ;
+
+        }
+        return false;
+    }
+
+    public static boolean vocabContains (Mot mot  ){
+
+        for (Mot mot2 : recherche.keySet()){
+            if(mot.equals(mot2)) return true ;
+
+        }
+        return false;
     }
 
 

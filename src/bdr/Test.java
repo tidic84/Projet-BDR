@@ -24,6 +24,8 @@ public class Test {
 		tfIdf.vocabulaire(corpus);
 		System.out.println(Vocabulary.getVocab());
 
+
+
 	};
 
 

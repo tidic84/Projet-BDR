@@ -7,12 +7,16 @@ public class TfIdf {
 
     double[] idf;
 
+    public TfIdf() {
+
+    }
+
     public void vocabulaire(Corpus corpus) {
         Integer integer = 0 ;
         for (Document document : corpus.getCollDocuments()) {
             for (Mot mot : document.getListMot()) {
-                if( Vocabulary.getVocab().containsKey(mot) )  return;
-                if(Vocabulary.getStopWord().contains(mot)) return ;
+                if( Vocabulary.vocabContains(mot) )  continue;
+                if(Vocabulary.stopWordContains(mot))  continue;
                 Vocabulary.add(mot, integer);
                 integer++;
 
@@ -58,5 +62,38 @@ public class TfIdf {
 //        return tf.values().toString();
         return"tg";
     }
+
+
+    public TfIdf processCorpus(Corpus corpus) {
+
+        vocabulaire(corpus);
+        Vocabulary.getVocab();
+        for(Document document: corpus ){
+            double[] tab = new double[200000];
+            int nbMots= document.nbMots();
+            for(Mot mot : document){
+                int id = Vocabulary.getId(mot);
+                tab[id]++ ;
+            }
+            for(int i = 0 ; i < tab.length ; i++) {
+                tab[i] /= nbMots;
+
+            }
+
+            tf.put(document,tab);
+
+        }
+
+
+
+
+
+        return this ;
+
+
+
+    }
+
+
 
 }
