@@ -12,57 +12,90 @@ public class TfIdf {
     }
 
     public void vocabulaire(Corpus corpus) {
-        Integer integer = 0 ;
+        Integer integer = 0;
         for (Document document : corpus.getCollDocuments()) {
             for (Mot mot : document.getListMot()) {
-                if( Vocabulary.vocabContains(mot) )  continue;
-                if(Vocabulary.stopWordContains(mot))  continue;
+                if (Vocabulary.vocabContains(mot)) continue;
+                if (Vocabulary.stopWordContains(mot)) continue;
                 Vocabulary.add(mot, integer);
                 integer++;
-            }}
+            }
+        }
     }
 
     public TfIdf processCorpus(Corpus corpus) {
         vocabulaire(corpus);
         int totalMots = Vocabulary.getVocab().size();
         System.out.println(Vocabulary.getVocab()); // <--------------  Vocab
-        HashMap<Mot,Integer> vocab = Vocabulary.getVocab();
+        HashMap<Mot, Integer> vocab = Vocabulary.getVocab();
 
-        for(Document document: corpus ){
+        for (Document document : corpus) {
             double[] tab = new double[totalMots];
-            int nbMots= document.nbMots();
-            for(Mot mot : document){
-                if(mot == null) continue;
-                if(!Vocabulary.vocabContains(mot)) continue;
+            int nbMots = document.nbMots();
+            for (Mot mot : document) {
+                if (mot == null) continue;
+                if (!Vocabulary.vocabContains(mot)) continue;
 
                 int id = Vocabulary.getId(mot);
-                tab[id]++ ;
+                tab[id]++;
             }
-            for(int i = 1 ; i < tab.length ; i++) {
-                if(tab[i] == 0) continue;
+            for (int i = 1; i < tab.length; i++) {
+                if (tab[i] == 0) continue;
                 tab[i] /= nbMots;
             }
-            tf.put(document,tab);
+            tf.put(document, tab);
         }
 
         int nbDoc = corpus.getNbDocuments();
         double[] tab = new double[totalMots];
-        tf.forEach((document, occ)-> {
-            for(int i = 1; i < occ.length; i++) {
-                if(occ[i] != 0) {
+        tf.forEach((document, occ) -> {
+            for (int i = 1; i < occ.length; i++) {
+                if (occ[i] != 0) {
                     tab[i]++;
                 }
             }
         });
-        for(int i = 1; i < tab.length; i++) {
-            if(tab[i]==0) continue;
+        for (int i = 1; i < tab.length; i++) {
+            if (tab[i] == 0) continue;
 //            System.out.println("Mot: " + Vocabulary.getMot(i) + " Id:" + i + " nbDoc " + nbDoc + " / " + tab[i] + " = " + nbDoc / tab[i]);
-            tab[i] = nbDoc / tab[i];
+            tab[i] = Math.log(nbDoc / tab[i]);
         }
         idf = tab;
-        return this ;
+        return this;
+    }
+
+    /*  public void processQuery(String query, Document max ) {
+          double [] features = processCorpus(String) ;
+
+      }
+  */
+    public double[] features(String query) {
+        double[] features = new double[idf.length];
+        String[] mots = query.split(" ");
+        for (String motStr : mots) {
+            Mot mot = new Mot(motStr);
+            if (Vocabulary.vocabContains(mot)) {
+                int id = Vocabulary.getId(mot);
+                features[id]++;
+            }
+        }
+        return features;
+    }
+
+    public double[] evaluate() {
+
+        double dotProduct = 0.0 ;
+        double normQuery = 0.0;
+        double normTfIdf = 0.0;
+
+        for(int i = 0 ; i < features().length; i++){
+            dotProduct += queryFeatures[i] * tfValues[i] * idf[i];
+            dotProduct += queryFeatures[i] * tfValues[i] * idf[i];
+            dotProduct += queryFeatures[i] * tfValues[i] * idf[i];
+
+        }
+        dotProduct= queryFeatures[i] * tfValues[i] * idf[i]
+
     }
 
 
-
-}
