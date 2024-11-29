@@ -10,10 +10,7 @@ public class Bm25 extends TfIdf {
     private double avgDI;
 
 
-    public Bm25(double k1 , double b  ){
-        this.k1 = k1;
-        this.b = b;
-    }
+    public Bm25(){}
 
     @Override
     public TfIdf processCorpus(Corpus corpus) {

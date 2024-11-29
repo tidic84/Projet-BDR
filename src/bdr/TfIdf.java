@@ -89,8 +89,8 @@ public class TfIdf {
     }
 
     public HashMap<Document,Double> evaluate ( double[] queryFeatures) {
-//produits scalaire
 
+        //produits scalaire
         HashMap<Document,Double>  eval = new HashMap<>();
         tf.forEach((document , tab)->{
             double prodScal = 0.0 ;
@@ -100,7 +100,6 @@ public class TfIdf {
             System.out.println("µµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµ");
             //System.out.println(document.getTitre());
             for (int i = 0 ; i< idf.length ; i++){
-
                 prodScal +=  queryFeatures[i] * tab[i] * idf[i] ;// A scalaire B
                 //  System.out.println( " mot " + Vocabulary.getMot(i) + " A : " + queryFeatures[i]+ " b: "  + "tf "+ tab[i] + " * " +  "  idf :  " + idf[i] +" egal = " + tab[i] * idf[i] + " egal " + prodScal );
                 normeA += queryFeatures[i]*queryFeatures[i] ;
@@ -109,11 +108,8 @@ public class TfIdf {
             normeA=sqrt(normeA);
             normeB=sqrt(normeB);
             resultat = prodScal / (normeA * normeB) ;
-
             eval.put(document ,resultat);
         });
-
-
         return eval ;
     }
 

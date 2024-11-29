@@ -100,6 +100,19 @@ public class Corpus extends Vector<Document> {
         return taille.calculer(this);
     }
 
+    public Object getFeatures(Object methode) {
+        if(methode instanceof Bm25) {
+            Bm25 bm25 = (Bm25) methode;
+            bm25.processCorpus(this);
+            return bm25;
+        } else if(methode instanceof TfIdf) {
+            TfIdf tfIdf = (TfIdf) methode;
+            tfIdf.processCorpus(this);
+            return tfIdf;
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return "Corpus [titre=" + titre + ", collDocuments=" + super.toString() + "]";
