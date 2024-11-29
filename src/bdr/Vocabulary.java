@@ -12,6 +12,7 @@ public class Vocabulary {
     public static HashSet<Mot> stopl = new HashSet<Mot>();
 
     public Vocabulary(String path) throws FileNotFoundException {
+        if(!stopl.isEmpty()) return;
         File myObj = new File(path);
         Scanner myReader = new Scanner(myObj);
 
@@ -25,9 +26,14 @@ public class Vocabulary {
 
     public static int getId(Mot mot) {
         final int[] res = new int[1];
+        res[0] = 0;
         recherche.forEach((key, value) -> {
-            if(key.toString() == mot.toString()) {
+            if(key.equals(mot)) {
+//                System.out.println("Clé: " +key.toString() + " Mot: " + mot.toString());
+//                System.out.println("Id: " + value);
                 res[0] = value.intValue();
+//                System.out.println("Res[0]: " + res[0]);
+
             };
         });
         return res[0];

@@ -1,5 +1,7 @@
 package bdr;
 
+import java.util.Arrays;
+
 public class Test {
 
 	public static void main(String[] args) {
@@ -21,8 +23,7 @@ public class Test {
 //		System.out.println(reche);
 
 		TfIdf tfIdf = new TfIdf();
-		tfIdf.vocabulaire(corpus);
-		System.out.println(Vocabulary.getVocab());
+		tfIdf.processCorpus(corpus);
 
 
 
