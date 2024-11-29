@@ -14,7 +14,7 @@ public class Corpus extends Vector<Document> {
             Scanner myReader = new Scanner(myObj);
             int cpt = 0;// ENLEVER
 
-            while (myReader.hasNextLine() && cpt < 3) {
+            while (myReader.hasNextLine() && cpt < 4) {
 
                 String data = myReader.nextLine();
                 String titre = "";

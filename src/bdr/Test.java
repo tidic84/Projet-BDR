@@ -26,7 +26,9 @@ public class Test {
 		TfIdf tfIdf = new TfIdf();
 		System.out.println(Arrays.toString(tfIdf.processCorpus(corpus).idf));
 
+	//	tfIdf.evaluate(tfIdf.features("often anarch public "));
 
+		tfIdf.processQuery( "often anarch public",3 );
 
 
 

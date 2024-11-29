@@ -33,4 +33,9 @@ public class Document extends ArrayList<Mot> {
     public ArrayList<Mot> getListMot() {
         return this;
     }
+
+    public String getTitre(){
+        return titre.toString();
+    }
 }
+
