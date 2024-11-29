@@ -28,9 +28,9 @@ public class Test {
 	//	System.out.println(Arrays.toString(tfIdf.processCorpus(corpus).idf));
 
 	//	tfIdf.evaluate(tfIdf.features("often anarch public "));
-		Bm25 bm25 = new Bm25(1.5 , 0.75);
+		Bm25 bm25 = new Bm25(2.0 , 0.75);
 		bm25.processCorpus(corpus);
-		double[] queryFeatures = bm25.features("anarch polit");
+		double[] queryFeatures = bm25.features("often keyword usually chosen neurodevelopment");
 		System.out.println("Query Features: " + Arrays.toString(queryFeatures));
 
 

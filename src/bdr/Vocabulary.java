@@ -65,7 +65,7 @@ public class Vocabulary {
     public static boolean stopWordContains (Mot mot ){
 
         for (Mot mot2 : stopl){
-               if(mot.equals(mot2)) return true ;
+            if(mot.equals(mot2)) return true ;
 
         }
         return false;

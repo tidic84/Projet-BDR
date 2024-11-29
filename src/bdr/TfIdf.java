@@ -28,10 +28,14 @@ public class TfIdf {
 
     public TfIdf processCorpus(Corpus corpus) {
         vocabulaire(corpus);
-        int totalMots = Vocabulary.getVocab().size();
         System.out.println(Vocabulary.getVocab()); // <--------------  Vocab
-        HashMap<Mot, Integer> vocab = Vocabulary.getVocab();
+        setTf(corpus);
+        setIdf(corpus);
+        return this;
+    }
 
+    public void setTf(Corpus corpus) {
+        int totalMots = Vocabulary.getVocab().size();
         for (Document document : corpus) {
             double[] tab = new double[totalMots];
             int nbMots = document.getNbMots();
@@ -48,7 +52,10 @@ public class TfIdf {
             }
             tf.put(document, tab);
         }
+    }
 
+    public void setIdf(Corpus corpus) {
+        int totalMots = Vocabulary.getVocab().size();
         int nbDoc = corpus.getNbDocuments();
         double[] tab = new double[totalMots];
         tf.forEach((document, occ) -> {
@@ -60,31 +67,22 @@ public class TfIdf {
         });
         for (int i = 1; i < tab.length; i++) {
             if (tab[i] == 0) continue;
-           // System.out.println("Mot: " + Vocabulary.getMot(i) + " Id:" + i + " nbDoc " + nbDoc + " / " + tab[i] + " = " + nbDoc / tab[i]);
+            // System.out.println("Mot: " + Vocabulary.getMot(i) + " Id:" + i + " nbDoc " + nbDoc + " / " + tab[i] + " = " + nbDoc / tab[i]);
             tab[i] = Math.log(nbDoc / tab[i]);
         }
         idf = tab;
-        return this;
     }
 
-    /*  public void processQuery(String query, Document max ) {
-          double [] features = processCorpus(String) ;
 
-      }
-  */
+
     public double[] features(String query) {
         double[] features = new double[idf.length];
         String[] mots = query.split(" ");
         for (String motStr : mots) {
-            System.out.println("---");
-            System.out.println("Processing term: " + motStr);
             Mot mot = new Mot(motStr);
             if (Vocabulary.vocabContains(mot)) {
                 int id = Vocabulary.getId(mot);
-                System.out.println("Term found in vocabulary: " + Vocabulary.getMot(id));
                 features[id]++;
-            } else {
-                System.out.println("Term not found in vocabulary: " + motStr);
             }
         }
         return features;
@@ -104,7 +102,7 @@ public class TfIdf {
             for (int i = 0 ; i< idf.length ; i++){
 
                 prodScal +=  queryFeatures[i] * tab[i] * idf[i] ;// A scalaire B
-              //  System.out.println( " mot " + Vocabulary.getMot(i) + " A : " + queryFeatures[i]+ " b: "  + "tf "+ tab[i] + " * " +  "  idf :  " + idf[i] +" egal = " + tab[i] * idf[i] + " egal " + prodScal );
+                //  System.out.println( " mot " + Vocabulary.getMot(i) + " A : " + queryFeatures[i]+ " b: "  + "tf "+ tab[i] + " * " +  "  idf :  " + idf[i] +" egal = " + tab[i] * idf[i] + " egal " + prodScal );
                 normeA += queryFeatures[i]*queryFeatures[i] ;
                 normeB += (tab[i] * idf[i])*(tab[i] * idf[i]);
             }
