@@ -1,6 +1,5 @@
 package bdr;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +34,7 @@ public class TfIdf {
 
         for (Document document : corpus) {
             double[] tab = new double[totalMots];
-            int nbMots = document.nbMots();
+            int nbMots = document.getNbMots();
             for (Mot mot : document) {
                 if (mot == null) continue;
                 if (!Vocabulary.vocabContains(mot)) continue;
@@ -123,7 +122,7 @@ public class TfIdf {
             Document doc = Collections.max(eval.entrySet(), Map.Entry.comparingByValue()).getKey();
             double score = Collections.max(eval.entrySet(), Map.Entry.comparingByValue()).getValue();
             eval.remove(doc);
-            System.out.println("Tite: " + doc.getTitre() + " Score: " + score);
+            System.out.println("Titre: " + doc.getTitre() + " Score: " + score);
         }
 
     }

@@ -22,7 +22,7 @@ public class Document extends ArrayList<Mot> {
         this.add(new Mot(leMot));
     }
 
-    public int nbMots() {
+    public int getNbMots() {
         int n = 0;
         for (Mot mot : this) {
             n++;

@@ -23,6 +23,7 @@ public class Corpus extends Vector<Document> {
                 switch (dataSets) {
                     case WIKIPEDIA:
                         titre = data.split("\\|\\|\\|")[0];
+                        if (titre.equals(" ")) continue ;
                         document = new Document(new Mot(titre));
 
                         for (String mot : data.split("\\|\\|\\|")[1].split(" ")) {
