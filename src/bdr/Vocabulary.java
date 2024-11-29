@@ -38,6 +38,17 @@ public class Vocabulary {
         });
         return res[0];
     }
+    public static Mot getMot(int integer) {
+        final Mot[] mot = new Mot[1];
+        recherche.forEach((key, value) -> {
+            if(value == integer) {
+
+                mot[0] = key;
+
+            };
+        });
+        return mot[0];
+    }
 
     public static HashMap<Mot, Integer> getVocab() {
         return recherche;

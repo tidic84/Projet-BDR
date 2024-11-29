@@ -1,5 +1,6 @@
 package bdr;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Test {
@@ -23,7 +24,7 @@ public class Test {
 //		System.out.println(reche);
 
 		TfIdf tfIdf = new TfIdf();
-		tfIdf.processCorpus(corpus);
+		System.out.println(Arrays.toString(tfIdf.processCorpus(corpus).idf));
 
 
 

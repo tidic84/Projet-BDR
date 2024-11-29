@@ -23,13 +23,13 @@ public class TfIdf {
     }
 
     public TfIdf processCorpus(Corpus corpus) {
-
         vocabulaire(corpus);
+        int totalMots = Vocabulary.getVocab().size();
         System.out.println(Vocabulary.getVocab()); // <--------------  Vocab
         HashMap<Mot,Integer> vocab = Vocabulary.getVocab();
 
         for(Document document: corpus ){
-            double[] tab = new double[200000];
+            double[] tab = new double[totalMots];
             int nbMots= document.nbMots();
             for(Mot mot : document){
                 if(mot == null) continue;
@@ -38,28 +38,28 @@ public class TfIdf {
                 int id = Vocabulary.getId(mot);
                 tab[id]++ ;
             }
-            for(int i = 0 ; i < tab.length ; i++) {
+            for(int i = 1 ; i < tab.length ; i++) {
                 if(tab[i] == 0) continue;
                 tab[i] /= nbMots;
             }
             tf.put(document,tab);
         }
-        System.out.println(tf.values().toArray());
 
-//        int nbDoc = corpus.getNbDocuments();
-//        double[] tab = new double[200000];
-//        tf.forEach((document, occ)-> {
-//            for(int i = 0; i < 100; i++) {
-//                if(occ[i] != 0) {
-//                    tab[i]++;
-//                }
-//            }
-//        });
-//        for(int i = 0; i < tab.length; i++) {
-//            if(tab[i]==0) continue;
-//            System.out.println("Id:" + i + nbDoc + " / " + tab[i] + " = " + nbDoc / tab[i]);
-//            tab[i] = nbDoc / tab[i];
-//        }
+        int nbDoc = corpus.getNbDocuments();
+        double[] tab = new double[totalMots];
+        tf.forEach((document, occ)-> {
+            for(int i = 1; i < occ.length; i++) {
+                if(occ[i] != 0) {
+                    tab[i]++;
+                }
+            }
+        });
+        for(int i = 1; i < tab.length; i++) {
+            if(tab[i]==0) continue;
+//            System.out.println("Mot: " + Vocabulary.getMot(i) + " Id:" + i + " nbDoc " + nbDoc + " / " + tab[i] + " = " + nbDoc / tab[i]);
+            tab[i] = nbDoc / tab[i];
+        }
+        idf = tab;
         return this ;
     }
 
