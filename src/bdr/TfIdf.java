@@ -76,10 +76,15 @@ public class TfIdf {
         double[] features = new double[idf.length];
         String[] mots = query.split(" ");
         for (String motStr : mots) {
+            System.out.println("---");
+            System.out.println("Processing term: " + motStr);
             Mot mot = new Mot(motStr);
             if (Vocabulary.vocabContains(mot)) {
                 int id = Vocabulary.getId(mot);
+                System.out.println("Term found in vocabulary: " + Vocabulary.getMot(id));
                 features[id]++;
+            } else {
+                System.out.println("Term not found in vocabulary: " + motStr);
             }
         }
         return features;

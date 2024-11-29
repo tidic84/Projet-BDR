@@ -1,5 +1,6 @@
 package bdr;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Bm25 extends TfIdf {
@@ -44,14 +45,15 @@ public class Bm25 extends TfIdf {
             for (int i = 0; i < idf.length; i++) {
                 if(idf[i]==0 || tab[i]==0) continue;
 
-                score = idf[i] * (tab[i] * (k1 + 1)) /(tab[i] + (k1 * (1 - b + b * (document.getNbMots() / avgDI))));
+                score += idf[i] * (tab[i] * (k1 + 1)) /(tab[i] + (k1 * (1 - b + b * (document.getNbMots() / avgDI))));
                 //System.out.println(score);
             }
-           // System.out.println(document.getTitre());
+            // System.out.println(document.getTitre());
             eval.put(document,score);
             //System.out.println(eval);
         });
         return eval ;
+    }
     }
 
 
@@ -60,4 +62,4 @@ public class Bm25 extends TfIdf {
 
 
 
-}
+
