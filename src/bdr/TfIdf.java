@@ -1,8 +1,9 @@
 package bdr;
 
-import com.sun.webkit.dom.DocumentImpl;
-
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import static java.lang.Math.sqrt;
 
@@ -118,57 +119,12 @@ public class TfIdf {
         double[] queryFeatures = features(query);
         HashMap<Document,Double>  eval = evaluate(queryFeatures);
 
-        List<Map.Entry<Document,Double>> tabfin = new ArrayList<>(eval.entrySet());
-    tabfin.sort((e1,e2) -> Double.compare(e2.getValue() , e1.getValue()));
-        System.out.println(query);
-    tabfin.stream()
-            .limit(max)
-            .forEach(entry -> {
-                System.out.println("Document: " + entry.getKey().getTitre() + ", Score: " + entry.getValue());
-
-            });
-
-
-
-
-
-     /* for (Map.Entry evalua : eval.entrySet()) {
-
-            double maxi = max(evalua.getValue()) ;
-            Document doc = (Document) evalua.getKey();
-            System.out.println("clé: "+ doc.getTitre()
-                    + " | valeur: " + evalua.getValue());
-
-
+        for(int i = 0; i < max; i++) {
+            Document doc = Collections.max(eval.entrySet(), Map.Entry.comparingByValue()).getKey();
+            double score = Collections.max(eval.entrySet(), Map.Entry.comparingByValue()).getValue();
+            eval.remove(doc);
+            System.out.println("Tite: " + doc.getTitre() + " Score: " + score);
         }
-
-*/
-
-
-
-
-
-
-
-                 /*
-                   int taille = tab.length;
-
-          for (int i = 1; i < taille; i++)
-          {
-               int index = tab[i];
-               int j = i-1;
-
-               while(j >= 0 && tab[j] > index)
-               {
-                    tab[j+1] = tab[j];
-                    j--;
-               }
-               tab[j+1] = index;
-        }
-        }
-*/
-
-
 
     }
 
