@@ -9,30 +9,17 @@ public class Vocabulary {
 
     public static HashMap<Mot, Integer> recherche = new HashMap<Mot, Integer>();
 
-    //HashSet<Mot> stopl = new HashSet<Mot>();
+    public static HashSet<Mot> stopl = new HashSet<Mot>();
 
-    public Vocabulary(String path) {
+    public Vocabulary(String path) throws FileNotFoundException {
+        File myObj = new File(path);
+        Scanner myReader = new Scanner(myObj);
 
-        try {
-            File myObj = new File(path);
-            Scanner myReader = new Scanner(myObj);
-            int id = 1;
-            int cpt=0;
+        while (myReader.hasNextLine()) {
 
+            String data = myReader.nextLine();
+            stopl.add(new Mot(data)) ;
 
-            while (myReader.hasNextLine()) {
-
-                String data = myReader.nextLine();
-                Mot vocab = new Mot(data.split(" ")[0]);
-                recherche.put(vocab, id);
-                id++;
-                cpt++; // ENLEVER
-            }
-
-            myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
         }
     }
 
@@ -46,9 +33,19 @@ public class Vocabulary {
         return res[0];
     }
 
-    public HashMap<Mot, Integer> getRecherche() {
+    public static HashMap<Mot, Integer> getVocab() {
         return recherche;
     }
+
+    public static void add (Mot mot, Integer integer){
+        recherche.put(mot, integer) ;
+    }
+
+    public static  HashSet<Mot> getStopWord(){
+        return stopl ;
+    }
+
+
 
     @Override
     public String toString() {

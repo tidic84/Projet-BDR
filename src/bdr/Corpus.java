@@ -14,7 +14,7 @@ public class Corpus extends Vector<Document> {
             Scanner myReader = new Scanner(myObj);
             int cpt = 0;// ENLEVER
 
-            while (myReader.hasNextLine() && cpt < 1 ) {
+            while (myReader.hasNextLine() ) {
 
                 String data = myReader.nextLine();
                 String titre = "";
@@ -40,7 +40,7 @@ public class Corpus extends Vector<Document> {
                         for (String mot : data.split("\\{")[1].split(" ")) { // modifier
                             document.putMot(mot);
                         }
-                        collDocuments.add(document);
+                        this.add(document);
                         cpt++; // ENLEVER
 
                 }

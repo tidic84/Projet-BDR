@@ -1,8 +1,5 @@
 package bdr;
 
-import java.lang.invoke.VolatileCallSite;
-import java.util.HashMap;
-
 public class Test {
 
 	public static void main(String[] args) {
@@ -12,7 +9,7 @@ public class Test {
 //		TailleDocument taillecol = new TailleDocument();
 //		TailleMot taillemot = new TailleMot();
 		
-		System.out.println(corpus);
+
 //		System.out.println(taillecol.calculer(corpus));
 		//System.out.println(taillemot.calculer(corpus));
 		
@@ -22,9 +19,10 @@ public class Test {
 
 //		Vocabulary reche = new Vocabulary("./ressources/stemmed.vocab");
 //		System.out.println(reche);
+
 		TfIdf tfIdf = new TfIdf();
 		tfIdf.vocabulaire(corpus);
-		System.out.println(tfIdf);
+		System.out.println(Vocabulary.getVocab());
 
 	};
 

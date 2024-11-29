@@ -3,16 +3,24 @@ package bdr;
 import java.util.HashMap;
 
 public class TfIdf {
-
     HashMap<Document, double[]> tf = new HashMap<Document, double[]>();
+
     double[] idf;
 
-    public void TfIdf() {
+    public void vocabulaire(Corpus corpus) {
+        Integer integer = 0 ;
+        for (Document document : corpus.getCollDocuments()) {
+            for (Mot mot : document.getListMot()) {
+                if( Vocabulary.getVocab().containsKey(mot) )  return;
+                if(Vocabulary.getStopWord().contains(mot)) return ;
+                Vocabulary.add(mot, integer);
+                integer++;
 
+
+            }}
     }
 
-    public void vocabulaire(Corpus corpus) {
-        Vocabulary vocab = new Vocabulary("./ressources/stemmed.vocab");
+    /*public static void TfIdf() {
         for (Document document : corpus.getCollDocuments()) {
             double[] tab = new double[0];
             int nbMot = document.nbMots(document);
@@ -38,8 +46,9 @@ public class TfIdf {
             }
             tf.put(document, tab);
         }
-    }
 
+    }
+*/
     @Override
     public String toString() {
 //        String res = "[";
