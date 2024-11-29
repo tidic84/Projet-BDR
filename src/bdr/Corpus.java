@@ -40,7 +40,7 @@ public class Corpus extends Vector<Document> {
                         for (String mot : data.split("\\{")[1].split(" ")) { // modifier
                             document.putMot(mot);
                         }
-                        this.add(document);
+                        collDocuments.add(document);
                         cpt++; // ENLEVER
 
                 }
@@ -56,6 +56,14 @@ public class Corpus extends Vector<Document> {
         titre = path;
 
     }
+
+    public void test() {
+        Document doc = new Document(new Mot("test"));
+        this.add(doc);
+        System.out.println(this);
+//		System.out.println(collDocuments);
+    }
+
 
     public void addDocument(String path, DataSets dataSets) {
         try {
