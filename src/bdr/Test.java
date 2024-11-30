@@ -29,16 +29,27 @@ public class Test {
 //		System.out.println(Arrays.toString(tfIdf.processCorpus(corpus).idf));
 
 //		tfIdf.evaluate(tfIdf.features("often anarch public "));
-		Bm25 bm25 = new Bm25();
-		bm25.processCorpus(corpus);
+
+	//	Bm25 bm25 = new Bm25();
+	//	bm25.processCorpus(corpus);
 		Scanner sc = new Scanner(System.in);
 		System.out.println("tape la recherche : ");
 		String str = sc.nextLine();
+		TfIdf tf = new TfIdf();
+		tf.processCorpus(corpus);
+		tf.processQuery(str,5 ) ;
 
 
 //		System.out.println("Query Features: " + Arrays.toString(queryFeatures));
 
-		bm25.processQuery(str , 5 );
+	//	bm25.processQuery(str , 5 );
+
+
+
+
+
+
+
 
 //		});
 

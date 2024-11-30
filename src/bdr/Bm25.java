@@ -25,6 +25,9 @@ public class Bm25 extends TfIdf {
 
     @Override
     public TfIdf processCorpus(Corpus corpus) {
+        if (corpus == null || corpus.isEmpty()) {
+            throw new Bm25Exception("La requête de l'utilisateur est nulle ou vide.");
+        }
 //        super.processCorpus(corpus);
         vocabulaire(corpus);
         System.out.println(Vocabulary.getVocab()); // <--------------  Vocab

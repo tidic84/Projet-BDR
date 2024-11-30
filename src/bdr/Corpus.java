@@ -10,11 +10,14 @@ public class Corpus extends Vector<Document> {
 
     public Corpus(String path, DataSets dataSets ) { // ajouter instance class tfidf ou bm25
         try {
+            if(path == null ) {
+                throw new CorpusException("Fichier contenant les docs est nul");
+            }
             File myObj = new File(path);
             Scanner myReader = new Scanner(myObj);
             int cpt = 0;// ENLEVER
 
-            while (myReader.hasNextLine() && cpt < 500) {
+            while (myReader.hasNextLine() && cpt < 5) {
 
                 String data = myReader.nextLine();
                 String titre = "";
@@ -52,6 +55,8 @@ public class Corpus extends Vector<Document> {
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
+        } catch (CorpusException e) {
+            throw new RuntimeException(e);
         }
 
         titre = path;

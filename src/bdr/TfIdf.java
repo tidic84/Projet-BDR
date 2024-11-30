@@ -41,7 +41,9 @@ public class TfIdf {
     }
 
     public TfIdf processCorpus(Corpus corpus) {
-        if(corpus == null) return null;
+        if(corpus == null|| corpus.isEmpty()){
+            throw new TfIdfException("Le corpus est nul ou ne contient aucun document.");
+        }
         vocabulaire(corpus);
         System.out.println(Vocabulary.getVocab()); // <--------------  Vocab
         setTf(corpus);
@@ -153,8 +155,15 @@ public class TfIdf {
     }
 
     public  void processQuery(String query , int max){
+        if ( query == " ") {
+            throw new Bm25Exception("Le champ est vide");
+
+        }
+
         double[] queryFeatures = features(query);
         HashMap<Document,Double>  eval = evaluate(queryFeatures);
+
+
 
         for(int i = 0; i < max; i++) {
             Document doc = Collections.max(eval.entrySet(), Map.Entry.comparingByValue()).getKey();
