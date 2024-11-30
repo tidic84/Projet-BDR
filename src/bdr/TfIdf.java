@@ -15,6 +15,7 @@ public class TfIdf {
     }
 
     public void vocabulaire(Corpus corpus) {
+        if(corpus == null) return;
         Integer integer = 0;
         for (Document document : corpus.getCollDocuments()) {
             for (Mot mot : document.getListMot()) {
@@ -26,7 +27,21 @@ public class TfIdf {
         }
     }
 
+    // On a dupliqué la méthode vocabulaire et on a enlevé la condition qui vérifie si le mot est dans la stopword (mais on a pas compris pourquoi il le faut le faire)
+    public void vocabulaireMax(Corpus corpus) {
+        if(corpus == null) return;
+        Integer integer = 0;
+        for (Document document : corpus.getCollDocuments()) {
+            for (Mot mot : document.getListMot()) {
+                if (Vocabulary.vocabContains(mot)) continue;
+                Vocabulary.add(mot, integer);
+                integer++;
+            }
+        }
+    }
+
     public TfIdf processCorpus(Corpus corpus) {
+        if(corpus == null) return null;
         vocabulaire(corpus);
         System.out.println(Vocabulary.getVocab()); // <--------------  Vocab
         setTf(corpus);
@@ -34,7 +49,17 @@ public class TfIdf {
         return this;
     }
 
+    public TfIdf processCorpusMax(Corpus corpus) {
+        if(corpus == null) return null;
+        vocabulaireMax(corpus);
+        System.out.println(Vocabulary.getVocab()); // <--------------  Vocab
+        setTf(corpus);
+        setIdf(corpus);
+        return this;
+    }
+
     public void setTf(Corpus corpus) {
+        if(corpus == null) return;
         int totalMots = Vocabulary.getVocab().size();
         for (Document document : corpus) {
             double[] tab = new double[totalMots];
@@ -55,6 +80,7 @@ public class TfIdf {
     }
 
     public void setIdf(Corpus corpus) {
+        if(corpus == null) return;
         int totalMots = Vocabulary.getVocab().size();
         int nbDoc = corpus.getNbDocuments();
         double[] tab = new double[totalMots];
@@ -76,6 +102,19 @@ public class TfIdf {
 
 
     public double[] features(String query) {
+        double[] features = new double[idf.length];
+        String[] mots = query.split(" ");
+        for (String motStr : mots) {
+            Mot mot = new Mot(motStr);
+            if(Vocabulary.stopWordContains(mot)) continue;
+            if (Vocabulary.vocabContains(mot)) {
+                int id = Vocabulary.getId(mot);
+                features[id]++;
+            }
+        }
+        return features;
+    }
+    public double[] featuresMax(String query) {
         double[] features = new double[idf.length];
         String[] mots = query.split(" ");
         for (String motStr : mots) {

@@ -17,10 +17,8 @@ public class Vocabulary {
         Scanner myReader = new Scanner(myObj);
 
         while (myReader.hasNextLine()) {
-
             String data = myReader.nextLine();
             stopl.add(new Mot(data)) ;
-
         }
     }
 
