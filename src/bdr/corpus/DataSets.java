@@ -1,4 +1,4 @@
-package bdr;
+package bdr.corpus;
 
 public enum DataSets {
 	WIKIPEDIA,

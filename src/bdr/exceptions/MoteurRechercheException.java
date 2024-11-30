@@ -1,4 +1,4 @@
-package bdr;
+package bdr.exceptions;
 
 public class MoteurRechercheException extends Exception{
     public MoteurRechercheException(String message){

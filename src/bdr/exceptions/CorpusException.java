@@ -1,4 +1,4 @@
-package bdr;
+package bdr.exceptions;
 
 public class CorpusException extends MoteurRechercheException {
 
