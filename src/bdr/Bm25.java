@@ -1,7 +1,9 @@
 package bdr;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Bm25 extends TfIdf {
 
@@ -9,8 +11,17 @@ public class Bm25 extends TfIdf {
     private double b ;
     private double avgDI;
 
+    public Bm25(double k1 , double b ) {
+        this.k1 = k1;
+        this.b = b;
 
-    public Bm25(){}
+    }
+    public Bm25(){
+        k1=1.5;
+        b=0.75;
+
+    }
+
 
     @Override
     public TfIdf processCorpus(Corpus corpus) {
@@ -72,12 +83,14 @@ public class Bm25 extends TfIdf {
             double score = 0.0;
             for(int i = 0; i < queryFeatures.length; i++) {
                 if(queryFeatures[i] == 0) continue;
-                System.out.println("Mot: " + Vocabulary.getMot(i) + " idf: " + idf[i] + " tf: " + tab[i]);
+               // System.out.println("Mot: " + Vocabulary.getMot(i) + " idf: " + idf[i] + " tf: " + tab[i]);
                 score += idf[i] * ((tab[i] * (k1 + 1)) /(tab[i] + (k1 * (1 - b + b * (document.getNbMots() / avgDI)))));
             }
             eval.put(document, score);
+
         });
         return eval ;
     }
+
 
 }

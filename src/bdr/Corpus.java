@@ -8,13 +8,13 @@ import java.util.Scanner;
 public class Corpus extends Vector<Document> {
     private String titre;
 
-    public Corpus(String path, DataSets dataSets) {
+    public Corpus(String path, DataSets dataSets ) { // ajouter instance class tfidf ou bm25
         try {
             File myObj = new File(path);
             Scanner myReader = new Scanner(myObj);
             int cpt = 0;// ENLEVER
 
-            while (myReader.hasNextLine() && cpt < 4) {
+            while (myReader.hasNextLine() && cpt < 500) {
 
                 String data = myReader.nextLine();
                 String titre = "";
@@ -64,6 +64,8 @@ public class Corpus extends Vector<Document> {
         System.out.println(this);
 //		System.out.println(collDocuments);
     }
+
+
 
 
     public void addDocument(String path, DataSets dataSets) {

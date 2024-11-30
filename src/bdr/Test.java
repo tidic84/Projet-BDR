@@ -3,6 +3,7 @@ package bdr;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Test {
 
@@ -28,19 +29,19 @@ public class Test {
 //		System.out.println(Arrays.toString(tfIdf.processCorpus(corpus).idf));
 
 //		tfIdf.evaluate(tfIdf.features("often anarch public "));
-//		Bm25 bm25 = new Bm25(2.0 , 0.75);
-//		bm25.processCorpus(corpus);
-//		double[] queryFeatures = bm25.features("often keyword usually chosen neurodevelopment");
+		Bm25 bm25 = new Bm25();
+		bm25.processCorpus(corpus);
+		Scanner sc = new Scanner(System.in);
+		System.out.println("tape la recherche : ");
+		String str = sc.nextLine();
+
+
 //		System.out.println("Query Features: " + Arrays.toString(queryFeatures));
 
+		bm25.processQuery(str , 5 );
 
-//		HashMap<Document , Double> caca = bm25.evaluate(queryFeatures);
-//		caca.forEach((document , db) -> {
-//			System.out.println("nom doc "+  document.getTitre()  + " score : " + db );
 //		});
 
 
-	};
-
-
+	}
 }
